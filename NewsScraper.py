@@ -31,10 +31,7 @@ for single_news in news:
     time = single_news.find("span",class_ = 'gs-u-vh')
     location = single_news.find('a',class_ = "gs-c-section-link gs-c-section-link--truncate nw-c-section-link nw-o-link nw-o-link--no-visited-state")
     new = [title,description,time,location]
-    for i in new:
-        if i is None:
-            print(i)
-            continue
+
     title = title.getText().strip()
     description = description.getText().strip()
     time = time.getText().strip()
