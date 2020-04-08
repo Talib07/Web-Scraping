@@ -14,18 +14,20 @@ title = title.getText().strip()
 description = top_news.find('p',class_="gs-c-promo-summary gel-long-primer gs-u-mt nw-c-promo-summary")
 description = description.getText().strip()
 time = top_news.find('span', class_="gs-u-vh")
-time = time.getText().strip()
+if time is None:
+    time = 'Live'
+else:
+    time = time.getText().strip()
 location = top_news.find('a',class_="gs-c-section-link gs-c-section-link--truncate nw-c-section-link nw-o-link nw-o-link--no-visited-state")
-location = location.getText().strip()for _ in classes:
-    news = results.find_all('div',class_= _)
-    
+location = location.getText().strip()
 
-print('Title:' + str(title),end = '\n')
-print('Description:'+ str(description),end = "\n")
-print('Time:' + str(time),end = "\n")
-print('Location or Domain:' + str(location),end = "\n\n\n")
+print('Title : ' + str(title),end = '\n')
+print('Description : '+ str(description),end = "\n")
+print('Time : ' + str(time),end = "\n")
+print('Location or Domain : ' + str(location),end = "\n\n\n")
 
-classes = ["gel-layout__item gs-u-pb+@m gel-1/3@m gel0-1/4@xl gel-1/3@xxl nw-o-keyline nw-o-no-keyline@m","gel-layout__item gs-u-pb+@m gel-1/3@m gel-1/4@xl gel-1/3@xxl nw-o-keyline nw-o-no-keyline@m"]
+classes = ["gel-layout__item gs-u-pb+@m gel-1/3@m gel0-1/4@xl gel-1/3@xxl nw-o-keyline nw-o-no-keyline@m",
+           "gel-layout__item gs-u-pb+@m gel-1/3@m gel-1/4@xl gel-1/3@xxl nw-o-keyline nw-o-no-keyline@m"]
 
 for _ in classes:
     news = results.find_all('div',class_= _)
@@ -36,12 +38,13 @@ for _ in classes:
         time = single_news.find("span",class_ = 'gs-u-vh')
         location = single_news.find('a',class_ = "gs-c-section-link gs-c-section-link--truncate nw-c-section-link nw-o-link nw-o-link--no-visited-state")
         new = [title,description,time,location]
-        
+        if None in new:
+            continue
         title = title.getText().strip()
         description = description.getText().strip()
         time = time.getText().strip()
         location = location.getText().strip()
-        print('Title:' + str(title),end = '\n')
-        print('Description:'+ str(description),end = "\n")
-        print('Time:' + str(time),end = "\n")
-        print('Location or Domain:' + str(location),end = "\n\n\n")
+        print('Title : ' + str(title),end = '\n')
+        print('Description : '+ str(description),end = "\n")
+        print('Time : ' + str(time),end = "\n")
+        print('Location or Domain : ' + str(location),end = "\n\n\n")
